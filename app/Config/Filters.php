@@ -6,7 +6,7 @@ use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
-
+use App\Filters\AdminAuthFilter;
 class Filters extends BaseConfig
 {
 	/**
@@ -19,6 +19,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+                'isAdminLoggedIn' => AdminAuthFilter::class
 	];
 
 	/**

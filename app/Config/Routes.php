@@ -21,8 +21,8 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->set404Override(false);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -30,11 +30,27 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/test', 'Home::test');
+$routes->add('login', 'Auth\LoginController::index');
+$routes->post('login/doLogin', 'Auth\LoginController::doLogin');
 
+
+
+ 
+
+$routes->group('admin', ['filter' => 'isAdminLoggedIn'], function($routes)
+{
+    $routes->add('blog', 'Admin\BlogController::index',);
+//    $routes->add('blog', 'Admin\BlogController::index');
+    $routes->get('home', 'Admin\HomeController::index' );
+});
+
+
+/*
 /*
  * --------------------------------------------------------------------
  * Additional Routing
