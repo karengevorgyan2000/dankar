@@ -1,6 +1,6 @@
 <?php
 
-    echo view('/header');
+    echo view('layouts/header');
 ?>
 
     <div class="container">
@@ -72,5 +72,5 @@
     </div>
 <?php
 
-    echo view('/footer');
+    echo view('layouts/footer');
 ?>

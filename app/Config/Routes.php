@@ -35,8 +35,8 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/test', 'Home::test');
-$routes->add('login', 'Auth\LoginController::index');
-$routes->post('login/doLogin', 'Auth\LoginController::doLogin');
+$routes->add('login', 'Auth\AuthController::index');
+$routes->post('login/doLogin', 'Auth\AuthController::doLogin');
 
 
 
@@ -47,7 +47,19 @@ $routes->group('admin', ['filter' => 'isAdminLoggedIn'], function($routes)
     $routes->add('blog', 'Admin\BlogController::index',);
 //    $routes->add('blog', 'Admin\BlogController::index');
     $routes->get('home', 'Admin\HomeController::index' );
-});
+    $routes->add('logout', 'Auth\AuthController::logOut' );
+    $routes->add('about-us', 'Admin\AboutusController::index' );
+    $routes->post('about-us/add', 'Admin\AboutusController::add' );
+    
+        $routes->group('blog', function($routes) {
+            $routes->post('add', 'Admin\BlogController::store' );
+            $routes->post('list', 'Admin\BlogController::list' );
+            $routes->delete('delete/(:num)', 'Admin\BlogController::delete/$1' );
+            $routes->put('update-status/(:num)/(:segment)', 'Admin\BlogController::updateStatus/$1/$2' );
+            $routes->get('show/(:num)', 'Admin\BlogController::show/$1' );
+        });
+ });
+    
 
 
 /*

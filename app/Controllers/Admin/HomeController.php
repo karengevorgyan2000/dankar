@@ -7,7 +7,6 @@
         
 
         public function index(){
-            var_dump(session()->get('admin'));
            return view('admin/index');
 //            
         }

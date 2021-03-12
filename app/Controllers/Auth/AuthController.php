@@ -4,7 +4,7 @@
     use App\Controllers\BaseController;
     use App\Models\User;
     
-    class LoginController extends BaseController {
+    class AuthController extends BaseController {
         private $user = '';
         
         public function __construct(){
@@ -17,9 +17,13 @@
         }
         
         public function doLogin(){
-            
-            
-            //var_dump($this->request->getVar('email'));exit;
+            $rules = [
+			'email'		=> 'required|valid_email',
+			'password' 	=> 'required|min_length[3]',
+		];
+            if (! $this->validate($rules)) {
+			return redirect()->to('/login')->withInput()->with('error', 'Invalid User credentials');
+		}
             $data = array('email'=>$this->request->getVar('email'),
                           'password'=> md5($this->request->getVar('password')));
             
@@ -39,12 +43,19 @@
                      ]
                 ];
                 $session->set($adminData);
+                $session->set('isAdminLoggedIn', true);
                 
-                return redirect()->to('/admin/home');
+                return redirect()->to('/admin/blog');
             } else {
                 return redirect()->to('/login')->withInput()->with('error', 'Invalid User credentials');
             }
           
+        }
+        
+        public function logOut(){
+            $session = session();
+            $session->destroy();
+            return redirect()->to('/login');          
         }
         
         
