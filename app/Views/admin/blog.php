@@ -20,6 +20,7 @@
                               <form class ='col-12' id='blog-form'>
                                   <div class = 'w-100' >
                                       <div class = 'mb-2'>
+                                          <input id = 'blog_image' type="file" class="blog_image border-top-0 border-secondary" required = "required" name="filepond" '>
                                           <input type="text" value='<?= old('title_am')?>' name = 'title_am' class="form-control " placeholder="Title Am" required = "required" aria-label="Recipient's username" aria-describedby="basic-addon2">
 
                                       </div>
@@ -52,9 +53,9 @@
                                  <div class ='mt-4 w-100 collapse multi-collapse' id="en"">
                                       <div class = 'mb-2'>
                                           <input type="text" name = 'title_en' class="form-control" placeholder="Title En" aria-label="Recipient's username" aria-describedby="basic-addon2">
-
+                                          
                                       </div>
-
+                                     
                                       <textarea id="editor3" name ='editor3' >
 
                                       </textarea> 
@@ -109,41 +110,179 @@
 
     
 <script type="text/javascript">
-    let editor1, editor2, editor3;
-    ClassicEditor
-            .create( document.querySelector( '#editor' ), {
-                    //toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-                    
-            } )
+    var blog_image =  '';
+  
+    $(function(){
+        // Turn input element into a pond with configuration options
 
-            .then( editor => {
-                   editor1 =  editor;
-            } )
-            .catch( err => {
-                    console.error( err.stack );
-            } );
-            
-    ClassicEditor
-            .create( document.querySelector( '#editor2' ), {
-                    //toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-            } )
-            .then( editor => {
-                    editor2 = editor;
-            } )
-            .catch( err => {
-                    console.error( err.stack );
-            } );
-    ClassicEditor
-            .create( document.querySelector( '#editor3' ), {
-                    //toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-            } )
-            .then( editor => {
-                    editor3 = editor;
+        const pond = $('.blog_image').filepond({
+            allowMultiple: false,
+            maxFileSize: '1MB',
+            onaddfile :function(error, obj) {
+                blog_image = obj.file;
+            },
+            onremovefile:function(error, obj) {
+                blog_image = '';
 
-            } )
-            .catch( err => {
-                    console.error( err.stack );
-            } );
+            }
+        });
+    })
+    tinymce.init({
+        selector: '#editor',
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste imagetools wordcount'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| media',
+        height: 300,
+        image_title: true,
+        automatic_uploads: true,
+       
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+              Note: In modern browsers input[type="file"] is functional without
+              even adding it to the DOM, but that might not be the case in some older
+              or quirky browsers like IE, so you might want to add it to the DOM
+              just in case, and visually hide it. And do not forget do remove it
+              once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+              var file = this.files[0];
+
+              var reader = new FileReader();
+              reader.onload = function () {
+                /*
+                  Note: Now we need to register the blob in TinyMCEs image blob
+                  registry. In the next release this part hopefully won't be
+                  necessary, as we are looking to handle it internally.
+                */
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                cb(blobInfo.blobUri(), { title: file.name });
+              };
+              reader.readAsDataURL(file);
+            };
+
+            input.click();
+        },
+
+    });
+    tinymce.init({
+        selector: '#editor2',
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste imagetools wordcount'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| media',
+        height: 300,
+        image_title: true,
+        automatic_uploads: true,
+        
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+              Note: In modern browsers input[type="file"] is functional without
+              even adding it to the DOM, but that might not be the case in some older
+              or quirky browsers like IE, so you might want to add it to the DOM
+              just in case, and visually hide it. And do not forget do remove it
+              once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+              var file = this.files[0];
+
+              var reader = new FileReader();
+              reader.onload = function () {
+                /*
+                  Note: Now we need to register the blob in TinyMCEs image blob
+                  registry. In the next release this part hopefully won't be
+                  necessary, as we are looking to handle it internally.
+                */
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                cb(blobInfo.blobUri(), { title: file.name });
+              };
+              reader.readAsDataURL(file);
+            };
+
+            input.click();
+        },
+
+    });
+    tinymce.init({
+        selector: '#editor3',
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste imagetools wordcount'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| media',
+        height: 300,
+        image_title: true,
+        automatic_uploads: true,
+        
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+              Note: In modern browsers input[type="file"] is functional without
+              even adding it to the DOM, but that might not be the case in some older
+              or quirky browsers like IE, so you might want to add it to the DOM
+              just in case, and visually hide it. And do not forget do remove it
+              once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+              var file = this.files[0];
+
+              var reader = new FileReader();
+              reader.onload = function () {
+                /*
+                  Note: Now we need to register the blob in TinyMCEs image blob
+                  registry. In the next release this part hopefully won't be
+                  necessary, as we are looking to handle it internally.
+                */
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                cb(blobInfo.blobUri(), { title: file.name });
+              };
+              reader.readAsDataURL(file);
+            };
+
+            input.click();
+        },
+
+    });
+
+
+
 
     var blogDataTable = $('#blogTable').DataTable( {
                 "processing": true,
@@ -159,7 +298,7 @@
                     { "data": "created_at", "orderable": true},
                     { "data": "action", "orderable": false},
                 ],
-                        "order":[['0' ,'desc']]
+                    "order":[['0' ,'desc']]
     } );
 
     
@@ -167,20 +306,26 @@
     
     
     $(".addblog").click(function(){
+        if($('.js-edit-blog').attr('data-blog-id')){
+            var id = $('.js-edit-blog').attr('data-blog-id');
+        }else{
+            var id = 0;
+        }
+        var file_id = $(this).attr('data-blog-id');
         var formData = new FormData($('#blog-form')[0])
         var datablogid = $(this).attr('data-blog-id');
-        var editor_am =  editor1.getData();
-        var editor_ru =  editor2.getData();
-        var editor_en =  editor3.getData();
-
+        var editor_am =  tinymce.get("editor").getContent();
+        var editor_ru =  tinymce.get("editor2").getContent();
+        var editor_en =  tinymce.get("editor3").getContent();
+        
         formData.append('editor', editor_am)
         formData.append('editor2', editor_ru)
         formData.append('editor3', editor_en)
         formData.append('blogid', datablogid)
-       
+        formData.append('file', blog_image);
        
         $.ajax({
-           url: '<?= APP_URL?>/admin/blog/add',
+           url: '<?= APP_URL?>/admin/blog/add/'+id+'/'+file_id,
            type: 'POST',
            processData: false,
            contentType: false,
@@ -210,6 +355,39 @@
 
 
     });
+    $(document).on('click','.js-edit-blog',function(){
+        
+        
+        var id = $(this).attr('data-blog-id');
+       
+        $.ajax({
+            url: "<?= APP_URL?>/admin/blog/show/"+id,
+            type: 'GET',
+            dataType:'JSON',
+            success: function(response) {
+               
+               if(response.file_name != '') {
+                   $('.blog_image').filepond('addFile', "<?= APP_URL?>/uploads/blog/"+response.file_name).then(function(file){
+                        console.log('file added', file);
+                    });
+               }
+               
+               $("input[name='title_am']").val(response.title_am);
+               $("input[name='title_ru']").val(response.title_ru);
+               $("input[name='title_en']").val(response.title_en);
+//               $("input[name='filepond']").val(response);
+               tinymce.get("editor").setContent(response.body_am);
+               tinymce.get("editor2").setContent(response.body_ru);
+               tinymce.get("editor3").setContent(response.body_en);
+               
+               
+               $('#blogModal').modal('toggle');
+               $('.addblog').attr('data-blog-id',response.id)
+               
+            }
+
+        })
+    })
     $(document).on('click','.js-delete-blog',function(){
         Swal.fire({
             title: 'Are you sure?',
@@ -293,41 +471,16 @@
           })     
         
     })
-    $(document).on('click','.js-edit-blog',function(){
-        
-        
-        var id = $(this).attr('data-blog-id');
-       ;
-        $.ajax({
-            url: "<?= APP_URL?>/admin/blog/show/"+id,
-            type: 'GET',
-            dataType:'JSON',
-            success: function(response) {
-                
-               console.log(response);
-               $("input[name='title_am']").val(response.title_am);
-               $("input[name='title_ru']").val(response.title_ru);
-               $("input[name='title_en']").val(response.title_en);
-               editor1.setData(response.body_am);
-               editor2.setData(response.body_ru);
-               editor3.setData(response.body_en);
-               
-               $('#blogModal').modal('toggle');
-               $('.addblog').attr('data-blog-id',response.id)
-               
-            }
-
-        })
-    })
+    
     
     $('#blogModal').on('hidden.bs.modal', function () {
         $("input[name='title_am']").val('');
         $("input[name='title_ru']").val('');
         $("input[name='title_en']").val('');
-        editor1.setData('');
-        editor2.setData('');
-        editor3.setData('');
-               
+        tinymce.get("editor").setContent('');
+        tinymce.get("editor2").setContent('');
+        tinymce.get("editor3").setContent('');
+        $('.blog_image').filepond('removeFile');       
         $('.addblog').attr('data-blog-id', 0)
     })
  </script>

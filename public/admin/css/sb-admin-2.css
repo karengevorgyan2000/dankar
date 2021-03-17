@@ -11217,3 +11217,19 @@ body.sidebar-toggled footer.sticky-footer {
     min-height:200px;
     max-height:300px
 }
+.tox-notification.tox-notification--in.tox-notification--warning{
+	display:none !important;
+}
+
+
+
+.filepond--list {
+    left: 0 !important;
+    right: 0 !important;
+}
+.filepond--item {
+    margin:0 !important;
+}
+.filepond--root{
+    margin-top: 5px !important;
+}

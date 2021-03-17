@@ -17,7 +17,8 @@
                 'title_en', 
                 'body_en', 
                 'body_am', 
-                'body_ru', 
+                'body_ru',
+                'file_id',
                 'status'
             ];
             

@@ -39,10 +39,14 @@ class Addblog extends Migration
                                 'type' => 'longtext',
                                 'null' => true,
                         ],
+                        'file_id' =>[
+                                'type'          => 'INT',
+                                'constraint'    => 10,
+                        ],    
                         'status' => [
-                            'type' => 'ENUM("active","deactive")',
-                            'default' => 'active',
-                            'null' => FALSE,
+                            'type'      => 'ENUM("active","deactive")',
+                            'default'   => 'active',
+                            'null'      => FALSE,
                                 
                         ],
                         'created_at' => [

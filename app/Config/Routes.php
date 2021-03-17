@@ -42,21 +42,29 @@ $routes->post('login/doLogin', 'Auth\AuthController::doLogin');
 
  
 
-$routes->group('admin', ['filter' => 'isAdminLoggedIn'], function($routes)
-{
+$routes->group('admin', ['filter' => 'isAdminLoggedIn'], function($routes){
     $routes->add('blog', 'Admin\BlogController::index',);
 //    $routes->add('blog', 'Admin\BlogController::index');
     $routes->get('home', 'Admin\HomeController::index' );
+    
     $routes->add('logout', 'Auth\AuthController::logOut' );
     $routes->add('about-us', 'Admin\AboutusController::index' );
     $routes->post('about-us/add', 'Admin\AboutusController::add' );
     
         $routes->group('blog', function($routes) {
-            $routes->post('add', 'Admin\BlogController::store' );
+            $routes->post('add/(:num)/(:num)', 'Admin\BlogController::store/$1/$2' );
             $routes->post('list', 'Admin\BlogController::list' );
             $routes->delete('delete/(:num)', 'Admin\BlogController::delete/$1' );
             $routes->put('update-status/(:num)/(:segment)', 'Admin\BlogController::updateStatus/$1/$2' );
             $routes->get('show/(:num)', 'Admin\BlogController::show/$1' );
+        });
+        $routes->group('home', function($routes) {
+            $routes->post('add', 'Admin\HomeController::store' );
+            $routes->post('slide_list', 'Admin\HomeController::slideList' );
+            $routes->delete('delete/(:num)', 'Admin\HomeController::delete/$1' );
+            $routes->put('update-status/(:num)/(:segment)', 'Admin\HomeController::updateStatus/$1/$2' );
+            $routes->get('show/(:num)', 'Admin\HomeController::show/$1' );
+            $routes->put('edit/(:num)', 'Admin\HomeController::edit/$1' );
         });
  });
     

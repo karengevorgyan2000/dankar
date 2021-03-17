@@ -15,7 +15,7 @@
                 <a class="nav-link" href="home">
                     <span>Home</span></a>
             </li>
-            <li	 class="nav-item active">
+            <li	 class="nav-item ">
                <a class="nav-link" href="blog">
 
                     <span>Blog</span>
@@ -29,7 +29,7 @@
                 
             </li>
 		<li	 class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#">
                     <span> Contact us</span>
                 </a>
                 

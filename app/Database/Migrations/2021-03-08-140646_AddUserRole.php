@@ -19,7 +19,12 @@ class AddUserRole extends Migration
                         'title' => [
                                 'type' => 'VARCHAR',
                                 'constraint' => '100',
-                        ]
+                        ],
+                        'created_at' => [
+                                'type' => 'TIMESTAMP',
+                                'null' => true,
+                                
+                        ],
                 ]);
                 $this->forge->addKey('id', true);
 

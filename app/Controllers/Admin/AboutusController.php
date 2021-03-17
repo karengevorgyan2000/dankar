@@ -30,7 +30,6 @@
                 $data = [
                              'about_us'=>$this->request->getVar('aboutus'),
                          ];
-                         
                 if($this->aboutUs->get()->getRow()){
                     $query = $this->aboutUs->where('id', $this->request->getVar('id'))->set($data)->update();
                 }else{
