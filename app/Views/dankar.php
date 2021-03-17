@@ -24,7 +24,7 @@
                             <li class="nav-item">
                                 <a class="nav-link " href="#">Contact Us</a>
                             </li> 
-                            <li class="nav-item donate pl-4 pr-4">
+                            <li class="nav-item donate_menu pl-4 pr-4">
                                 <a class="nav-link " href="#">Donate</a>
                             </li> 
 
@@ -38,7 +38,7 @@
                 
                 <p class = 'text-light slide_text '>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
             </div>
-            <div class="col-4 h-50 align-self-center bg-white row position-relative p-5">
+            <div class="col-4 h-50 align-self-center bg-white row p-5">
                 <div class = 'col-8 '>
                     <p class = 'text-dark slide_text '>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 </div>
@@ -59,6 +59,31 @@
                 </div>
             </div>
         </div>
-         
+        <div class="row justify-content-around donate_row position-relative">
+			<div class = 'col-6 h-75 dante_col'>
+				<div class = 'h-50 p-4'>
+					<h3 class = 'mb-3'>Choose donation amount</h3>
+					<div class=" w-100" data-toggle="buttons">
+
+						<label class=" btn-primary form-check-label w-100 pl-5 pt-3 pb-3">
+							<input type="radio" class="form-check-input" checked autocomplete="off"> 10$
+						</label>
+
+						<label class=" btn-primary form-check-label w-100 pl-5 pt-3 pb-3">
+							<input type="radio" class="form-check-input" autocomplete="off"> 20$
+						</label>
+
+						<label class=" btn-primary form-check-label w-100 pl-5 pt-3 pb-3">
+							<input type="radio" class="form-check-input" autocomplete="off"> 50$
+						</label>
+
+					</div>
+				</div>
+				
+			</div>
+			<div class = 'col-4'>
+			
+			</div>
+		</div> 
     </body>
 </html>

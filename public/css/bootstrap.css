@@ -4,6 +4,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10274,7 +10275,7 @@ a.text-dark:hover, a.text-dark:focus {
 .nav-item {
     margin-left: 50px;
 }
-.donate{
+.donate_menu{
     background-color: #c1f7d5;
     border-radius: 100px;
 }
@@ -10282,9 +10283,9 @@ a.text-dark:hover, a.text-dark:focus {
     padding: 10px 20px !important;
 }
 .slider{
-    height: 700px;
+    height: 600px;
     background-color: black;
-    
+    margin:0;
 }
 .slide_text{
     overflow-wrap: break-word;
@@ -10298,4 +10299,16 @@ a.text-dark:hover, a.text-dark:focus {
     top:-19px;
     width: 150px;
     border-radius: 0;
+}
+.donate_row{
+	height:600px;
+	background-color:red;
+	margin:0;
+}
+.dante_col{
+	margin-top:-100px;
+	border:1px solid blue;
+}
+.form-check{
+	background-color:#fff;
 }
