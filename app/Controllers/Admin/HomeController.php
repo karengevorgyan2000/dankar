@@ -49,7 +49,8 @@
                                 $fileId = $this->files->getInsertID();
                                 $slideData = [
                                     'file_id' => $fileId,
-                                    'title' => $this->request->getVar('title'),
+                                    'title_left' => $this->request->getVar('title_left'),
+                                    'title_right' => $this->request->getVar('title_right'),
                                 ];
                                 
                                 if($this->homeSlider->insert($slideData)) {
@@ -77,14 +78,15 @@
             // var_dump($this->request->getRawInput()['title']);exit();
             // var_dump($this->request->getVar('title_update'));exit();
             $this->homeSlider->where('id',$id);
-            $this->homeSlider->set('title', $this->request->getVar('title_update'));
+            $this->homeSlider->set('title_left', $this->request->getVar('title_left_update'));
+            $this->homeSlider->set('title_right', $this->request->getVar('title_right_update'));
 
             if($this->homeSlider->update()){
                 die('0');
             }
         }
         public function slideList(){
-            $fields = ['id', 'title', 'status', 'created_at'];
+            $fields = ['id', 'title_left','title_right', 'status', 'created_at'];
             $action = '';
             $status = '';
             $limit = $this->request->getVar('length');

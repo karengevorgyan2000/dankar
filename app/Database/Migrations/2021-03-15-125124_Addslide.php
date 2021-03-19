@@ -15,7 +15,12 @@ class Addslide extends Migration
                                 'unsigned'       => true,
                                 'auto_increment' => true,
                         ],
-                        'title' => [
+                        'title_left' => [
+                                'type' => 'VARCHAR',
+                                'constraint' => '100',
+                                'null' => true,
+                        ],
+                        'title_right' => [
                                 'type' => 'VARCHAR',
                                 'constraint' => '100',
                                 'null' => true,

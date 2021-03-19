@@ -36,7 +36,11 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Home::index');
 $routes->get('/test', 'Home::test');
 $routes->add('login', 'Auth\AuthController::index');
+$routes->add('donate', 'DonateController::index');
 $routes->post('login/doLogin', 'Auth\AuthController::doLogin');
+
+
+
 
 
 

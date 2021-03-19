@@ -19,8 +19,8 @@
                               <form class ='col-12' id = 'slide-form'>
                                   <div class = 'w-100' >
                                       <div class = 'mb-2'>
-                                            <input type="text"  name = 'title' class="form-control " placeholder="Title" >
-                                            
+                                            <input type="text"  name = 'title_left' class="form-control " placeholder="Title Left" >
+                                            <input type="text"  name = 'title_right' class="form-control mt-2" placeholder="Title Right" >
                                             <input id = 'image' type="file" class="my-pond border-top-0 border-secondary" required = "required" name="filepond">
                                             
                                             
@@ -54,7 +54,8 @@
                               <form class ='col-12' id='edit-title-form'>
                                   <div class = 'w-100' >
                                       <div class = 'mb-2'>
-                                            <input type="text"  name = 'title_update' class="form-control " placeholder="Title" >
+                                            <input type="text"  name = 'title_left_update' class="form-control " placeholder="Title Left" >
+                                            <input type="text"  name = 'title_right_update' class="form-control mt-2" placeholder="Title Right" >
                                       </div>
                                         
                                  </div> 
@@ -81,7 +82,8 @@
                 <thead>
                     <tr >
                         <th scope="col">Id</th>
-                        <th scope="col">Title</th>
+                        <th scope="col">Title Left</th>
+                        <th scope="col">Title Right</th>
                         <th scope="col">Image</th>
                         <th scope="col">Status</th>
                         <th scope="col">Created Time</th>
@@ -92,7 +94,8 @@
                 <tfoot>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Title</th>
+                        <th scope="col">Title Left</th>
+                        <th scope="col">Title Right</th>
                         <th scope="col">Image</th>
                         <th scope="col">Status</th>
                         <th scope="col">Created Time</th>
@@ -200,7 +203,8 @@
                   },
                   "columns": [
                       { "data": "id" , "orderable": true},
-                      { "data": "title", "orderable": true},
+                      { "data": "title_left", "orderable": true},
+                      { "data": "title_right", "orderable": true},
                       { "data": "image", "orderable": false},
                       { "data": "status", "orderable": true},
                       { "data": "created_at", "orderable": true},
@@ -301,7 +305,8 @@
                 type: 'GET',
                 dataType:'JSON',
                 success: function(response) {
-                    $("input[name='title_update']").val(response.title);
+                    $("input[name='title_left_update']").val(response.title_left);
+                    $("input[name='title_right_update']").val(response.title_right);
                     $('.editslide').attr('data-slide-id',response.id);
                     $('#slideModalEdit').modal('toggle');
                     //$('.addblog').attr('data-blog-id',response.id)
@@ -311,7 +316,8 @@
             });
       });
       $('#slideModal').on('hidden.bs.modal', function () {
-          $("input[name='title']").val('');
+          $("input[name='title_left']").val('');
+          $("input[name='title_right']").val('');
           $('.my-pond').filepond('removeFile');
           $('.addblog').attr('data-slide-id', 0);
       });

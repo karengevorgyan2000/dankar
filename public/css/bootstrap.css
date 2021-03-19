@@ -10282,33 +10282,321 @@ a.text-dark:hover, a.text-dark:focus {
 .nav-link{
     padding: 10px 20px !important;
 }
-.slider{
-    height: 600px;
-    background-color: black;
-    margin:0;
+.d-block{
+    height: 600px !important;
 }
-.slide_text{
+.slider_row{
+    margin: 0!important;
+}
+.slide_text_style{
     overflow-wrap: break-word;
-
+    color:white;
+    font-size: 22px;
+    line-height:25px
 }
 .slide-site{
-    border-radius: 100px
+    border-radius: 100px;
+    padding:10px 20px;
+    background-color: #c1f7d5;
 }
+
 .slide_share{
     left:10%;
     top:-19px;
     width: 150px;
     border-radius: 0;
+    background-color: #354463;
+    color:white;
 }
 .donate_row{
-	height:600px;
-	background-color:red;
-	margin:0;
+    height:600px;
+    background-color:#264355;
+    margin:0;
 }
 .dante_col{
 	margin-top:-100px;
-	border:1px solid blue;
+        z-index: 10;
+        background-color: #354463;
 }
 .form-check{
 	background-color:#fff;
+}
+.donate_checkout{
+        background-color: #c1f7d5;
+        border-radius: 100px;
+}
+.slide_text{
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    
+}
+.bg-white{
+    margin: 0 !important;
+}
+.donate_text{
+    overflow-wrap: break-word!important;
+}
+.btn-group label
+{
+    padding-left: 40px;
+}
+
+input[type="radio"]:empty
+{
+    display: none;
+}
+
+input[type="radio"] ~ span:before
+{
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:  0;
+    margin: auto 10px;
+    content: '';
+    width: 30px;
+    height: 30px;
+    border:1px solid #354463;
+    border-radius: 15px;
+}
+
+input[type="radio"]:before
+{
+    content: '\2714';
+    text-indent: .9em;
+    color: #black;
+  }
+
+input[type="radio"]:checked ~ span:before{
+    font: normal normal normal 14px/1 FontAwesome;
+    content:"\f111";
+    color: #fff;
+    line-height: 28px;
+    border:1px solid #fff;
+}
+.checkbox{
+    margin: 0;
+    position: relative;
+}
+input[type="radio"] ~ span{
+    font-size: 45px;
+    color: #354463;
+}
+.text_money{
+    color: #354463;
+}
+.donate_link{
+    color:#c1f7d5;
+    text-decoration: none;
+    
+}
+.donate_link:hover{
+    color:#fff;
+}
+.time_chackbox{
+    background-color:#fff; 
+}
+.time_chackbox label{
+    padding: 0;
+    margin: 0;
+}
+.time_chackbox_fild_text{
+    font-size: 25px!important;
+}
+  
+
+
+.credit-card{
+ background-color: #f4f4f4;
+  height: 100vh;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-holder {
+  margin: 2em 0;
+}
+
+.img-box {
+ padding-top: 20px;    
+ display: flex;
+ justify-content: center;
+}
+.card-box {
+  font-weight: 800;
+  padding: 1em 1em;
+  border-radius: 0.25em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.bg-news {
+  background: -webkit-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
+  background: -o-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
+  background: -moz-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
+  background: linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
+}
+.btn-primary{
+ background-image: -webkit-linear-gradient(315deg, #f54d70 0%, #fd8965 100%);
+background-image: -moz- oldlinear-gradient(315deg, #f54d70 0%, #fd8965 100%);
+background-image: -o-linear-gradient(315deg, #f54d70 0%, #fd8965 100%);
+background-image: linear-gradient(135deg, #c1f7d5 0%, #79987a 100%);
+-webkit-filter: hue-rotate(0deg);
+filter: hue-rotate(0deg);
+border: none !important;
+border-radius: 18px;
+
+}
+
+.credit-card form{
+	background-color: #ffffff;
+	padding: 0;
+	max-width: 600px;
+	margin: auto;
+}
+
+.credit-card .title{
+	font-family: 'Abhaya Libre', serif;
+	font-size: 1em;
+	color: #2C3E50;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 0.8em;
+	font-weight: 600;
+	padding-bottom: 8px;
+}
+.credit-card .card-details{
+	padding: 25px 25px 15px;
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .fas, .inner-addon .far {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  color: #bcbdbd !important;
+}
+.right-addon .fas, .right-addon .far { right: 0px; top: 40px;}
+.right-addon input { padding-right: 30px; }
+
+.credit-card .card-details label{
+	font-family: 'Abhaya Libre', serif;
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 15px;
+	color: #79818a;
+	text-transform: uppercase;
+}
+
+.payment input[type="text"] {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	-webkit-appearance: none;
+	display: block;
+	border-radius: 0;	
+}
+.credit-card .card-details input[type="text"]:focus { outline: none; }
+
+.credit-card .card-details button{
+	margin-top: 0.6em;
+	padding:12px 0;
+	font-weight: 600;
+}
+
+.credit-card .date-separator{
+ 	margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+	.credit-card{
+	  height: 250vh;
+	  width: 100%;
+	}
+	.credit-card .title {
+		font-size: 1.2em; 
+	}
+
+	.credit-card .row .col-lg-6 {
+		margin-bottom: 40px; 
+  	}
+  	.credit-card .card-details {
+    	padding: 40px 40px 30px; 
+    }
+
+  	.credit-card .card-details button {
+    	margin-top: 2em; 
+    } 
+}
+.payment{
+    background-color: #354463
+}
+.payment label{
+    color:white;
+}
+.payment input{
+    background-color: #354463;
+    color:grey;
+    border: none;
+    border-bottom: 2px solid #c1f7d5;
+    padding: 0;
+}
+.swiper-container {
+	width: 100%;
+	height: 100vh;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.main-slider .slider-bg-position {
+	background-size: cover!important;
+	background-position: center center!important;
+}
+.main-slider .swiper-button-prev, .main-slider .swiper-button-next {
+	background-image: none!important;
+	color: #fff;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #fff;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+}
+.main-slider h2 {
+	color: #fff;
+	font-size: 54px;
+	line-height: 59px;
+	padding: 0 19%;
+	text-transform: uppercase;
+}
+.main-slider .swiper-pagination-bullet {
+	width: 20px;
+	height: 20px;
+	background: rgba(255,255,255,0.9)
+}
+.main-slider .swiper-pagination-bullet-active {
+	background: #0297ff
 }

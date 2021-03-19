@@ -10,7 +10,8 @@
         protected $primaryKey = 'id';
         
         protected $allowedFields = [
-                'title',
+                'title_left',
+                'title_right',
                 'file_id',
                 'status'
             ];
