@@ -11,7 +11,9 @@
             protected $useAutoIncrement = true;
             
             protected $allowedFields = [
-                'about_us',
+                'aboutus_am',
+                'aboutus_ru',
+                'aboutus_en',
             ];
             
             protected $createdField  = 'created_at';

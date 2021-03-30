@@ -15,7 +15,15 @@ class Addabout extends Migration
                                 'unsigned'       => true,
                                 'auto_increment' => true,
                         ],
-                        'about_us'    =>[
+                        'aboutus_am'    =>[
+                                'type' => 'LONGTEXT',
+                                'null' => FALSE,
+                        ],
+						'aboutus_ru'    =>[
+                                'type' => 'LONGTEXT',
+                                'null' => FALSE,
+                        ],
+						'aboutus_en'    =>[
                                 'type' => 'LONGTEXT',
                                 'null' => FALSE,
                         ],

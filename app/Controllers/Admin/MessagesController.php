@@ -39,7 +39,8 @@
                     'email' => $val->email,
                     'subject' => $val->subject,
                     'message' => $val->message,
-                    'file' => "<a href = '".APP_URL."/uploads/messages/$val->file_name' download><i style = 'width:50px;height:50px;' class='ddd fa fa-download' aria-hidden='true'></i></a>"
+                    'file' => "<a href = '".APP_URL."/uploads/messages/$val->file_name' download><i style = 'width:50px;height:50px;' class='ddd fa fa-download' 	aria-hidden='true'></i></a>",
+                    'answer ' => "<a class = 'answer cursor-pointer' data-toggle='modal' data-mail = '{$val->email}' data-subject = '{$val->subject}'  data-target='#exampleModal'>Answer</a>"
   
                 ];
               }
@@ -53,6 +54,26 @@
             die(json_encode($data));
         
         }
-        
+        public function sendMail() {
+			$message = $this->request->getVar('message');
+			$subject = $this->request->getVar('subject');
+			$to = $this->request->getVar('mail');
+			$email = \Config\Services::email();
+			$email->setTo($to);
+			$email->setFrom('teamheroes90@gmail.com', 'Answer to your email');
+			
+			$email->setSubject($subject);
+			$email->setMessage($message);
+
+			if ($email->send()) 
+			{
+				echo 'Email successfully sent';
+			} 
+			else 
+			{
+				$data = $email->printDebugger(['headers']);
+				print_r($data);
+			}
+		}
         
     }

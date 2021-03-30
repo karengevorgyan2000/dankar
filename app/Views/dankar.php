@@ -29,19 +29,19 @@
                         <div class="collapse navbar-collapse " id="navbarsExampleDefault">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item ">
-                                        <a class="nav-link " href="#"> About Us</a>
+                                        <a class="nav-link " href="#about_us"> About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                        <a class="nav-link " href="#">  Our Stories</a>
+                                        <a class="nav-link " href="#our_stories">  Our Stories</a>
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link " href="#">News And Events</a>
                                 </li> 
                                 <li class="nav-item">
-                                        <a class="nav-link " href="#">Contact Us</a>
+                                        <a class="nav-link " href="#contact_us">Contact Us</a>
                                 </li> 
                                 <li class="nav-item donate_menu pl-4 pr-4">
-                                        <a class="nav-link " style="color: #FFFFFF !important;" href="#">Donate</a>
+                                        <a class="nav-link " style="color: #FFFFFF !important;" href="#donate">Donate</a>
                                 </li> 
 
                             </ul>
@@ -68,14 +68,11 @@
                                     </div>
                                     <div class = 'col-3 align-self-center text-left'>
                                         <div type="button" class="btn  slide-site">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
 
                                         </div>
                                         <div type="button" class="btn  mt-3 mb-3 slide-site">
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </div>
-                                        <div type="button" class="btn  slide-site">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                     <div  type = 'button' class="btn position-absolute slide_share">
@@ -89,11 +86,11 @@
                 </div>
               </div>
             
-        <div class="  donate_row position-relative slide">
+        <div class="  donate_row position-relative slide" >
 			<div class = 'container'>
 				<div class= 'row justify-content-around'>
 				<div class = 'col-xl-6 col-lg-6 col-sm-12 h-100 dante_col'>
-					<form class = '' action="/donate" method="post">
+					<form class = '' id = 'donate' action="/donate" method="post">
 						<div class = ' p-3'>
 							<h3 class = 'mb-3 text-white'>Choose donation amount</h3>
 							<div>
@@ -104,7 +101,7 @@
 											<span>10$</span>
 										</label>
 										<div class="col-8 m-auto">
-											<p class = 'm-auto text_money'>
+											<p class = 'm-auto text_money' >
 												"Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
 											</p>
 										</div>
@@ -170,9 +167,12 @@
             
             </div>
         </div>
-        <div>
+        <div id = 'our_stories'>
                 <div class="container">
                         <div class="row">
+								<div class="col-12">
+									<h2 class="h1-responsive font-weight-bold text-center my-4 text-dark">Our Stories</h2>
+								</div>
                                 <div id="carouselExampleIndicators" class="carousel slide blog_slide col-12" data-ride="carousel" data-interval="false">
                                     <ol class="carousel-indicators blog_indicator">
                                         <?php foreach ($blog as $key =>$row){?>
@@ -212,9 +212,12 @@
                         </div>
                 </div>
         </div>
-        <div class = 'about_us'>
+        <div class = 'about_us' id = 'about_us'>
                 <div class="container">
                         <div class="row align-items-center  p-4">
+							<div class="col-12">
+								<h2 class="h1-responsive font-weight-bold text-center my-4 text-white">About us</h2>
+							</div>
                             <div class="col-12 mb-5 ">
                                     <h4 class = 'text-white text-center'> <?php foreach ($aboutUs as $key =>$row){
                                                                         echo  $row->about_us;
@@ -250,7 +253,7 @@
 
                 </div>
         </div>
-        <div class = 'contact_us'>
+        <div class = 'contact_us' id = 'contact_us'>
             <div class = 'container'>
                 <div class = 'row'>
                     <section  class="mb-4 col-12">

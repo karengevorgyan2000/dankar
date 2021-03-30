@@ -77,8 +77,29 @@
 
                 if($this->transactions->insert($dataTransactions)){
                   $response['message'] = $message;
-                  return view('paymentResponse',$response);
-                }
+				  
+				  
+				  if($result->ClientEmail  !== ''){
+						$email = \Config\Services::email();
+						$email->setTo($result->ClientEmail);
+						$email->setFrom('teamheroes90@gmail.com', 'Thank You For Donation');
+						
+						$email->setSubject('Donation');
+						$email->setMessage($message);
+
+						if ($email->send()) 
+						{
+							echo 'Email successfully sent';
+						} 
+						else 
+						{
+							$data = $email->printDebugger(['headers']);
+						}
+				  }
+				  
+				  
+				return view('paymentResponse',$response);
+				}
                 
                 
                 

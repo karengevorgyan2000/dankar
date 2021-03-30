@@ -53,6 +53,7 @@ $routes->group('admin', ['filter' => 'isAdminLoggedIn'], function($routes){
     $routes->add('blog', 'Admin\BlogController::index',);
     $routes->add('messages', 'Admin\MessagesController::index');
     $routes->add('messages/list', 'Admin\MessagesController::list');
+    $routes->post('sendmail', 'Admin\MessagesController::sendMail');
     $routes->get('home', 'Admin\HomeController::index' );
     $routes->get('transactions', 'Admin\TransactionsController::index' );
     $routes->post('transactions/list', 'Admin\TransactionsController::list' );

@@ -18,7 +18,7 @@
             <li	 class="nav-item ">
                <a class="nav-link" href="blog">
 
-                    <span>Blog</span>
+                    <span>Our stories</span>
                 </a>
                 
             </li>
@@ -36,7 +36,7 @@
             </li>
             <li	class="nav-item">
                 <a class="nav-link" href="messages">
-                    <span> Messages</span>
+                    <span> Support</span>
                 </a>
             </li>
 

@@ -22,13 +22,15 @@
                 'message' => '',
             ];
             $require = [
-                'aboutus' => 'required',
+                'aboutus_am' => 'required',
             ];
             if(!$this->validate($require)) {
                 
             }else{
                 $data = [
-                             'about_us'=>$this->request->getVar('aboutus'),
+                             'aboutus_am'=>$this->request->getVar('aboutus_am'),
+                             'aboutus_ru'=>$this->request->getVar('aboutus_ru'),
+                             'aboutus_en'=>$this->request->getVar('aboutus_en'),
                          ];
                 if($this->aboutUs->get()->getRow()){
                     $query = $this->aboutUs->where('id', $this->request->getVar('id'))->set($data)->update();

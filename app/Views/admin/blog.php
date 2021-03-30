@@ -13,7 +13,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
 
-                      <h4 class="modal-title">Add new blogr</h4>
+                      <h4 class="modal-title">Add new blog</h4>
                     </div>
                         <div class="modal-body">
                           <div class="input-group mb-3">

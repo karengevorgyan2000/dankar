@@ -10742,4 +10742,7 @@ p{padding:10px}
 .contact_btn:hover{
     color: white;
 }
+html {
+  scroll-behavior: smooth;
+}
 
