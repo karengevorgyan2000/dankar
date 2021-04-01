@@ -15,9 +15,6 @@
 		
         
         public function index(){
-			
-			$this->sendMail();
-			exit;
             return view('admin/transactions');
            
         }

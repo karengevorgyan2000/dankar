@@ -6579,7 +6579,7 @@ a.close.disabled {
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
   width: 30px;
-  height: 3px;
+  height: 4px;
   margin-right: 3px;
   margin-left: 3px;
   text-indent: -999px;
@@ -10264,7 +10264,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 /*# sourceMappingURL=bootstrap.css.map */
 #logo{
-    height: 50px;
+    height: 47px;
 }
 .navbar{
     background-color:#fff !important;
@@ -10273,7 +10273,10 @@ a.text-dark:hover, a.text-dark:focus {
     color:#6d6a6a !important;
 }
 .nav-item {
-    margin-left: 50px;
+    margin-left: 35px;
+}
+.nav-item:first-child{
+    margin-left: 0;
 }
 .donate_menu{
     background-color: #505d7c;
@@ -10745,4 +10748,6 @@ p{padding:10px}
 html {
   scroll-behavior: smooth;
 }
-
+.dropdown{
+  border-bottom: 1px solid #6d6a6a;
+}

@@ -4,13 +4,14 @@
     $class2 = 'active';
     $class3 = 'active';
     $i = 0;
+
  ?>
 <html>
     <head>
         <title>Page</title>
         <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="js/jquery3.5.1jquery.min.js" ></script>
         <script src="js/popper.min.js"  crossorigin="anonymous"></script>
@@ -20,14 +21,14 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
                 <div class="container">
                     <div class = 'row m-auto'>
-                        <div >
-                            <a class="navbar-brand text-white" href="/"><img id = 'logo' src = '<?= APP_URL?>/images/logo.png'></a>
-                        </div>
-
                         <div class="collapse navbar-collapse " id="navbarsExampleDefault">
                             <ul class="navbar-nav ml-auto">
+                                <li class="nav-item ">
+                                    <a class="navbar-brand text-white p-0" href="/"><img id = 'logo' src = '<?= APP_URL?>/images/logo.png'></a>
+                                </li>
                                 <li class="nav-item ">
                                         <a class="nav-link " href="#about_us"> About Us</a>
                                 </li>
@@ -42,12 +43,18 @@
                                 </li> 
                                 <li class="nav-item donate_menu pl-4 pr-4">
                                         <a class="nav-link " style="color: #FFFFFF !important;" href="#donate">Donate</a>
-                                </li> 
-
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <select class="form-control border-0 lang" id="exampleFormControlSelect1">
+                                        <option name = 'lang' value="am">Armenian</option>
+                                        <option name = 'lang' value="en">English</option>
+                                        <option name = 'lang' value="ru">Russian</option>
+                                    </select>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                </div>	
+                </div>
             </nav>
         </header>
               
@@ -130,28 +137,27 @@
 										</div>
 									</div>
 								</div>
-                                                                <div class = 'col-12 mt-2  p-0'>
-                                                                    <a class = 'donate_link' >Enter a custom donation amount</a>
-                                                                    <div class="row " id = 'custom_donation' style = 'display:none;'>
-                                                                        <div class="col">
-                                                                          <select class="custom-select mr-sm-2" name ='currency' id="inlineFormCustomSelect">
-                                                                            <option selected value="840">USD</option>
-                                                                            <option value="051">AMD</option>
-                                                                            <option value="978">EUR</option>
-                                                                            <option value="643">RUB</option>
-                                                                        </select>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <input type="number" name ='testrad2' id ='donate_custom_input' class="form-control" >
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                    <div class = 'col-12 mt-2  p-0'>
+                                        <a class = 'donate_link' >Enter a custom donation amount</a>
+                                        <div class="row " id = 'custom_donation' style = 'display:none;'>
+                                            <div class="col">
+                                              <select class="custom-select mr-sm-2" name ='currency' id="inlineFormCustomSelect">
+                                                <option selected value="840">USD</option>
+                                                <option value="051">AMD</option>
+                                                <option value="978">EUR</option>
+                                                <option value="643">RUB</option>
+                                            </select>
+                                            </div>
+                                            <div class="col">
+                                                <input type="number" name ='testrad2' id ='donate_custom_input' class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
 							</div>
 							
 						</div>
 						
 						<div class="p-4 d-flex align-items-end">
-
 								<button class=" ml-auto btn donate_checkout" type="submit">Go to checkout</button>
 						</div>
 					</form>    
@@ -171,7 +177,7 @@
                 <div class="container">
                         <div class="row">
 								<div class="col-12">
-									<h2 class="h1-responsive font-weight-bold text-center my-4 text-dark">Our Stories</h2>
+									<h2 class="h1-responsive font-weight-bold text-center my-4 text-dark"><?= lang('text.our_stories')?></h2>
 								</div>
                                 <div id="carouselExampleIndicators" class="carousel slide blog_slide col-12" data-ride="carousel" data-interval="false">
                                     <ol class="carousel-indicators blog_indicator">
@@ -183,6 +189,8 @@
 
                                     </ol>
                                     <div class="carousel-inner bg-white">
+
+
                                         <?php foreach ($blog as $key =>$row){?>
                                                 <div class="carousel-item <?php if($class3 == 'active'){echo $class3;$class3 = '';} ?>">
                                                     <div class="row h-100 align-items-center justify-content-end position-relative ">
@@ -193,10 +201,10 @@
 
                                                             <div class = 'blog_text h-50 p-3'>
                                                                 <h5 class = 'text-white'>
-                                                                    <?= $row->title_am;?>
+                                                                    <?= $row->{"title_".$_COOKIE['lang']};?>
                                                                 </h5>
                                                                 <h5 class = 'text-white' style="font-size: 12px">
-                                                                    <?= $row->body_am;?>
+                                                                    <?= $row->{'body_'.$_COOKIE['lang']};?>
                                                                 </h5>
                                                             </div>
                                                             <div class = 'h-25 mt-5'>
@@ -219,8 +227,8 @@
 								<h2 class="h1-responsive font-weight-bold text-center my-4 text-white">About us</h2>
 							</div>
                             <div class="col-12 mb-5 ">
-                                    <h4 class = 'text-white text-center'> <?php foreach ($aboutUs as $key =>$row){
-                                                                        echo  $row->about_us;
+                                    <h4 class = 'text-white text-center' style="overflow-wrap: break-word!important;"> <?php foreach ($aboutUs as $key =>$row){
+                                                                        echo  $row->{"aboutus_".$_COOKIE['lang']};
                                                                     }  ?>   
                                     </h4>    
                             </div>
@@ -259,12 +267,11 @@
                     <section  class="mb-4 col-12">
 
                         <!--Section heading-->
-                        <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
-                        <!--Section description-->
-                        <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-                            a matter of hours to help you.</p>
+                        <div class = 'my-5'>
+                            <h2 class="h1-responsive font-weight-bold text-center ">Contact us</h2>
+                        </div>
 
-                        <div class="row">
+                        <div class="row mt-4">
 
                             <!--Grid column-->
                             <div class="col-md-6 mb-md-0 mb-5">
@@ -447,6 +454,17 @@
           });
 
 
-      });
+        });
+
+        $(".lang").change('change', function() {
+          var lang = $(this).val();
+          window.location.href = "<?= APP_URL?>/local/"+lang
+        });
+
+          if(document.cookie){
+            var cookie = document.cookie.split('=')[1];
+            console.log(cookie);
+            $( "option[value = "+cookie+"]" ).attr('selected','selected')
+          }
     </script>
 </html>

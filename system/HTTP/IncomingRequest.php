@@ -96,7 +96,7 @@ class IncomingRequest extends Request
 	 *
 	 * @var array
 	 */
-	protected $validLocales = [];
+	protected $validLocales = ['am','ru','en'];
 
 	/**
 	 * Configuration settings.
@@ -206,7 +206,7 @@ class IncomingRequest extends Request
 	 */
 	public function getLocale(): string
 	{
-		return $this->locale ?? $this->defaultLocale;
+		return $_COOKIE['lang'] ?? ( $this->locale ?? $this->defaultLocale);
 	}
 
 	//--------------------------------------------------------------------
@@ -222,10 +222,18 @@ class IncomingRequest extends Request
 	{
 		// If it's not a valid locale, set it
 		// to the default locale for the site.
-		if (! in_array($locale, $this->validLocales, true))
+    if (!in_array($locale, $this->validLocales, true))
 		{
 			$locale = $this->defaultLocale;
 		}
+
+//    if(!isset($_COOKIE['lang'])) {
+      setcookie( 'lang', $locale, time() + (86400 * 30), "/");
+      $_COOKIE['lang'] = $locale;
+//    }
+
+
+
 
 		$this->locale = $locale;
 		Locale::setDefault($locale);

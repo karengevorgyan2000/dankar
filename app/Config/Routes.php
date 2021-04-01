@@ -34,13 +34,13 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/local/(:segment)', 'Home::setLang/$1');
 $routes->get('/test', 'Home::test');
 $routes->add('login', 'Auth\AuthController::index');
 $routes->add('donate', 'DonateController::index');
 $routes->get('/payment/response', 'ReviewController::index');
 $routes->post('login/doLogin', 'Auth\AuthController::doLogin');
 $routes->post('mail', 'ContactController::mail');
-
 
 
 

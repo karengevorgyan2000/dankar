@@ -19,7 +19,7 @@
     <link href="<?= APP_URL?>/admin/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css" rel="stylesheet">
     <link type="text/css" href="<?= APP_URL?>/admin/css/sample.css" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="<?= APP_URL?>/admin/css/fontawesome.min.css"> 
+    <link rel="stylesheet" href="<?= APP_URL?>/admin/css/fontawesome.min.css">
 
     <script src="<?= APP_URL?>/admin/js/jquery-3.5.1.js"></script>
     <script src="<?= APP_URL?>/admin/js/jquery.dataTables.min.js"></script>
